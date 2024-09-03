@@ -1,5 +1,5 @@
 {
-  "name": "reactive-object",
+  "name": "use-reactive-object",
   "version": "1.0.0",
   "description": "React hook for creating reactive objects.",
   "main": "dist/index.cjs.js",
@@ -15,17 +15,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rodrigo1999/reactive-object.git"
+    "url": "git+https://github.com/Rodrigo1999/use-reactive-object.git"
   },
   "bugs": {
-    "url": "https://github.com/Rodrigo1999/reactive-object/issues"
+    "url": "https://github.com/Rodrigo1999/use-reactive-object/issues"
   },
-  "homepage": "https://github.com/Rodrigo1999/reactive-object",
+  "homepage": "https://github.com/Rodrigo1999/use-reactive-object",
   "files": [
     "dist"
   ],
   "keywords": [
     "reactive",
+    "use-reactive-object",
     "reactive-object",
     "reactive-class",
     "object",
