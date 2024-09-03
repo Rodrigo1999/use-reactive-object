@@ -13,6 +13,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && rollup -c"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodrigo1999/reactive-object.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rodrigo1999/reactive-object/issues"
+  },
+  "homepage": "https://github.com/Rodrigo1999/reactive-object",
   "files": [
     "dist"
   ],
