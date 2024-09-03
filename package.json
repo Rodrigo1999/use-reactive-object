@@ -1,0 +1,46 @@
+{
+  "name": "reactive-object",
+  "version": "1.0.0",
+  "description": "React hook for creating reactive objects.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "author": "<rodrigodev1999@gmail.com>",
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && rollup -c"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "reactive",
+    "reactive-object",
+    "reactive-class",
+    "object",
+    "observable",
+    "react",
+    "dynamic",
+    "custom",
+    "hooks",
+    "typescript"
+  ],
+  "peerDependencies": {
+    "react": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/react": "^18.3.5",
+    "react": "^18.3.1",
+    "rollup": "^4.21.2",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.5.4"
+  }
+}
