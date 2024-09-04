@@ -290,6 +290,6 @@ export function MyComponentCounter() {
 
 Note that when adding a new item to the array, there is no reactivity, but when incrementing, the component reacts, this is because `level 1` indicates to observe changes only at the first level, that is, at the root of the object.
 
-### Conclusion
+## Conclusion
 
 `useReactiveObject` is a powerful tool for creating reactive objects in React, but as with any tool that manipulates state in a deep way, it should be used with care and consideration. Avoid circular objects, be cautious when working with large collections, and use the controls provided by the library to ensure that your application remains performant and maintainable.
