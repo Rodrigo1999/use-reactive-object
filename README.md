@@ -85,11 +85,11 @@ Working with the approach described in the example provides several beneficial b
 
 * Because state and update logic are encapsulated and reactivity is handled automatically, cognitive overhead for the developer is reduced. There is no need to worry about React implementation details like hook dependencies or manual re-render optimizations, allowing the developer to focus on business logic.
 
-## Uso Responsável do useReactiveObject
+## Responsible Use of useReactiveObject
 
 While useReactiveObject offers a powerful and convenient way to create reactive objects in React, it's important to use it responsibly to avoid performance issues and unexpected behavior.
 
-Por debaixo dos panos, a maioria dos frameworks reativos utilizam proxy para dar vida às suas reatividades, temos como exemplo famoso o [vue.js](https://vuejs.org/). A excência desta biblioteca consiste nisso também, então é importante atentarmos para pontos importantes e que valem inclusive para os frameworks reativos tão utilizados no mercado:
+Under the hood, most reactive frameworks use a proxy to bring their reactivity to life, a famous example being [vue.js](https://vuejs.org/). The essence of this library lies in this as well, so it is important to pay attention to important points that are also valid for the reactive frameworks widely used in the market:
 
 ### 1. Avoid Circular Objects
 
@@ -149,9 +149,9 @@ In the above example, with level set to 2, the collection property will not be c
 
 ### 3. filter
 
-* **Description**: O filter é uma função que permite selecionar quais propriedades de um objeto devem ou não ser envolvidas por um proxy. Esta função recebe um objeto payload contendo o caminho da propriedade (path), o objeto-alvo (target), e o valor da propriedade (value). Com base nessas informações, você pode retornar true ou false para decidir se uma determinada propriedade deve ser reativa.
+* **Description**: filter is a function that allows you to select which properties of an object should or should not be proxy-wrapped. This function receives a payload object containing the property path, the target object, and the property value. Based on this information, you can return true or false to decide whether a given property should be reactive.
 
-* **Usage**: O filter é útil quando você deseja evitar que certas propriedades específicas ou tipos de propriedades se tornem reativas. Por exemplo, você pode querer excluir propriedades que não precisam ser monitoradas por mudanças ou evitar que arrays grandes sejam observáveis para melhorar o desempenho.
+* **Usage**: Filter is useful when you want to prevent certain specific properties or types of properties from becoming reactive. For example, you might want to exclude properties that don't need to be monitored for changes, or prevent large arrays from being observable to improve performance.
 
 ## Exemplos de Uso
 
@@ -289,3 +289,7 @@ export function MyComponentCounter() {
 ```
 
 Note that when adding a new item to the array, there is no reactivity, but when incrementing, the component reacts, this is because `level 1` indicates to observe changes only at the first level, that is, at the root of the object.
+
+### Conclusion
+
+`useReactiveObject` is a powerful tool for creating reactive objects in React, but as with any tool that manipulates state in a deep way, it should be used with care and consideration. Avoid circular objects, be cautious when working with large collections, and use the controls provided by the library to ensure that your application remains performant and maintainable.
