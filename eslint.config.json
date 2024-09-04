@@ -1,0 +1,61 @@
+{
+    "ignores": [
+        "dist"
+    ],
+    "overrides": [
+        {
+            "extends": [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "files": [
+                "**/*.{ts,tsx}"
+            ],
+            "parserOptions": {
+                "ecmaVersion": 2020
+            },
+            "globals": {
+                "window": "readonly",
+                "document": "readonly",
+                "navigator": "readonly",
+                "location": "readonly",
+                "history": "readonly",
+                "console": "readonly",
+                "setTimeout": "readonly",
+                "clearTimeout": "readonly",
+                "setInterval": "readonly",
+                "clearInterval": "readonly",
+                "fetch": "readonly",
+                "alert": "readonly",
+                "localStorage": "readonly",
+                "sessionStorage": "readonly",
+                "XMLHttpRequest": "readonly",
+                "FormData": "readonly",
+                "URLSearchParams": "readonly"
+            },
+            "plugins": [
+                "react-hooks",
+                "react-refresh"
+            ],
+            "rules": {
+                "react-hooks/rules-of-hooks": "error",
+                "react-hooks/exhaustive-deps": "warn",
+                "react-refresh/only-export-components": [
+                    "warn",
+                    {
+                        "allowConstantExport": true
+                    }
+                ],
+                "@typescript-eslint/no-unused-vars": [
+                    "warn"
+                ],
+                "@typescript-eslint/no-explicit-any": [
+                    "off"
+                ],
+                "@typescript-eslint/ban-ts-comment": [
+                    "off"
+                ]
+            }
+        }
+    ]
+}

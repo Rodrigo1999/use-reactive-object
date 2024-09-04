@@ -1,6 +1,5 @@
 import { BuildProxyConfig, BuildProxyParams } from "./types";
 import isObject from "./utils/isObject";
-import isPrimitive from "./utils/isPrimitive";
 
 export default function buildProxy<T extends object>(
     instance: T,
