@@ -1,10 +1,7 @@
 import { useReducer } from 'react'
 import useReactiveObject from 'use-reactive-object'
-import './App.css'
-import reactLogo from './assets/react.svg'
 import { MyComponentCart, MyComponentCart2 } from './cart.exemplo'
 import { MyComponentCounter } from './counter.example'
-import viteLogo from '/vite.svg'
 
 class Bar{
   constructor(){
@@ -72,14 +69,7 @@ function View() {
       <hr />
       <MyComponentCounter/>
       <hr />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+      
       <h1>Vite + React + {Math.random()}</h1>
       <div className="card">
         <button onClick={() => reactCount.increase()}>
