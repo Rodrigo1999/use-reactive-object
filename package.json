@@ -11,7 +11,9 @@
   "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist && rollup -c"
+    "build": "rm -rf dist && rollup -c",
+    "publish-beta": "pnpm build && npm publish --tag beta",
+    "publish-latest": "pnpm build && npm publish"
   },
   "repository": {
     "type": "git",
