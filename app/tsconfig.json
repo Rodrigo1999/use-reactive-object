@@ -22,7 +22,7 @@
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "paths": {
-      "reactive-object": ["../src/index.ts"]
+      "use-reactive-object": ["../src/index.ts"]
     }
   },
   "include": [

@@ -1,7 +1,9 @@
 import { useReducer } from 'react'
+import useReactiveObject from 'use-reactive-object'
 import './App.css'
 import reactLogo from './assets/react.svg'
-import useReactiveObject from 'reactive-object'
+import { MyComponentCart, MyComponentCart2 } from './cart.exemplo'
+import { MyComponentCounter } from './counter.example'
 import viteLogo from '/vite.svg'
 
 class Bar{
@@ -64,6 +66,12 @@ function View() {
   console.log('renderizou')
   return (
     <>
+      <MyComponentCart/>
+      <hr />
+      <MyComponentCart2/>
+      <hr />
+      <MyComponentCounter/>
+      <hr />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
