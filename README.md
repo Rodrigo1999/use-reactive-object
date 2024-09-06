@@ -153,7 +153,7 @@ In the above example, with level set to 2, the collection property will not be c
 
 * **Usage**: Filter is useful when you want to prevent certain specific properties or types of properties from becoming reactive. For example, you might want to exclude properties that don't need to be monitored for changes, or prevent large arrays from being observable to improve performance.
 
-## Exemplos de Uso
+## Usage Examples
 
 ### Filter
 
