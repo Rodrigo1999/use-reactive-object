@@ -12,7 +12,7 @@ export default function buildProxy<T extends object>(
 
     let path = ''
     let ocurrencyLevel = 0
-    return new Proxy(instance, {
+    const proxy = new Proxy(instance, {
         set(target, property, value) {
 
             path = path || getPath(property)
@@ -58,4 +58,8 @@ export default function buildProxy<T extends object>(
             return proxy
         },
     });
+
+    if(proxy['onProxy'] && typeof proxy['onProxy'] === 'function') proxy['onProxy'](proxy);
+
+    return proxy
 }

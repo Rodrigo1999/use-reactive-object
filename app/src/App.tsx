@@ -3,41 +3,55 @@ import useReactiveObject from 'use-reactive-object'
 import { MyComponentCart, MyComponentCart2 } from './cart.exemplo'
 import { MyComponentCounter } from './counter.example'
 
-class Bar{
-  constructor(){
+class Bar {
+  constructor() {
     Object.freeze(this)
   }
   hello = 'world'
 
-  computed(){
+  computed() {
     return this.hello + ': mundo'
   }
 }
 
-class Foo{
+class Foo {
   bar: Bar
-  constructor(){
+  constructor() {
     this.bar = new Bar()
     Object.freeze(this)
   }
   hello = 'world'
 
-  computed(){
+  computed() {
     return this.hello + ': mundo'
   }
 }
-class ReactCount {
+
+abstract class Utils{
+  protected onProxy(instance: ReactCount) {
+    console.log('nois')
+    for (const property of Object.getOwnPropertyNames(Object.getPrototypeOf(this))) {
+      if (typeof this[property] === 'function' && property !== 'constructor') {
+        this[property] = this[property].bind(instance);
+      }
+    }
+  }
+}
+class ReactCount extends Utils{
   count = 0
   count2 = 0
+  date = new Date()
 
   pol = {
     casa: 0,
     vol: [1, 2]
   }
-  
+
   foo = new Foo()
+
   increase() {
 
+    this.date.setFullYear(2028)
     if (this.pol.casa == 10) {
       this.pol.casa = 10
       /* this.pol = {
@@ -47,7 +61,7 @@ class ReactCount {
     } else {
       this.pol.casa++
     }
-    if(this.pol.vol.length < 15){
+    if (this.pol.vol.length < 15) {
       this.pol.vol.push(this.pol.casa)
     }
     if (this.count === 5) {
@@ -55,6 +69,15 @@ class ReactCount {
     }
     this.count++
   }
+
+  /* protected onProxy(instance: ReactCount) {
+    console.log('oi')
+    for (const property of Object.getOwnPropertyNames(Object.getPrototypeOf(this))) {
+      if (typeof this[property] === 'function' && property !== 'constructor') {
+        this[property] = this[property].bind(instance);
+      }
+    }
+  } */
 }
 
 function View() {
@@ -63,17 +86,17 @@ function View() {
   console.log('renderizou')
   return (
     <>
-      <MyComponentCart/>
+      <MyComponentCart />
       <hr />
-      <MyComponentCart2/>
+      <MyComponentCart2 />
       <hr />
-      <MyComponentCounter/>
+      <MyComponentCounter />
       <hr />
-      
+
       <h1>Vite + React + {Math.random()}</h1>
       <div className="card">
-        <button onClick={() => reactCount.increase()}>
-          count is {reactCount.count} - {reactCount.pol.casa} - {reactCount.pol.vol.length} - {reactCount.foo.computed()}
+        <button onClick={reactCount.increase}>
+          count is {reactCount.count} - {reactCount.pol.casa} - {reactCount.pol.vol.length} - {reactCount.foo.computed()} - {reactCount.date.getFullYear()}
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
