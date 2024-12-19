@@ -27,17 +27,26 @@ class Foo {
   }
 }
 
-abstract class Utils{
+abstract class Utils {
   protected onProxy(instance: ReactCount) {
     console.log('nois')
-    for (const property of Object.getOwnPropertyNames(Object.getPrototypeOf(this))) {
-      if (typeof this[property] === 'function' && property !== 'constructor') {
+
+    const proto = Object.getPrototypeOf(this);
+    for (const property of Object.getOwnPropertyNames(proto)) {
+
+      const descriptor = Object.getOwnPropertyDescriptor(proto, property);
+    
+      if (
+        descriptor &&
+        typeof descriptor.value === 'function' &&
+        property !== 'constructor'
+      ) {
         this[property] = this[property].bind(instance);
       }
     }
   }
 }
-class ReactCount extends Utils{
+class ReactCount extends Utils {
   count = 0
   count2 = 0
   date = new Date()
@@ -48,6 +57,11 @@ class ReactCount extends Utils{
   }
 
   foo = new Foo()
+
+  get lb() {
+    console.log('-----oi-----')
+    return 1
+  }
 
   increase() {
 

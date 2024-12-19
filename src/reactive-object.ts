@@ -1,7 +1,15 @@
 export default abstract class ReactiveObject<T>{
     protected onProxy(instance: T) {
-      for (const property of Object.getOwnPropertyNames(Object.getPrototypeOf(this))) {
-        if (typeof this[property] === 'function' && property !== 'constructor') {
+      const proto = Object.getPrototypeOf(this);
+      for (const property of Object.getOwnPropertyNames(proto)) {
+
+        const descriptor = Object.getOwnPropertyDescriptor(proto, property);
+
+        if (
+          descriptor &&
+          typeof descriptor.value === 'function' &&
+          property !== 'constructor'
+        ) {
           this[property] = this[property].bind(instance);
         }
       }
