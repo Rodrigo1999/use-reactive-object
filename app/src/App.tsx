@@ -31,22 +31,31 @@ abstract class Utils {
   protected onProxy(instance: ReactCount) {
     console.log('nois')
 
-    const proto = Object.getPrototypeOf(this);
-    for (const property of Object.getOwnPropertyNames(proto)) {
+    let proto = Object.getPrototypeOf(this);
+    while (proto && proto !== Object.prototype) {
+      console.log(proto)
+      for (const property of Object.getOwnPropertyNames(proto)) {
+        const descriptor = Object.getOwnPropertyDescriptor(proto, property);
 
-      const descriptor = Object.getOwnPropertyDescriptor(proto, property);
-    
-      if (
-        descriptor &&
-        typeof descriptor.value === 'function' &&
-        property !== 'constructor'
-      ) {
-        this[property] = this[property].bind(instance);
+        if (
+          descriptor &&
+          typeof descriptor.value === 'function' &&
+          property !== 'constructor'
+        ) {
+          this[property] = this[property].bind(instance);
+        }
       }
+      proto = Object.getPrototypeOf(proto); // Move para o próximo protótipo na cadeia
     }
   }
 }
-class ReactCount extends Utils {
+
+class ReactCountParent extends Utils {
+  click() {
+    console.log(this)
+  }
+}
+class ReactCount extends ReactCountParent {
   count = 0
   count2 = 0
   date = new Date()
@@ -109,7 +118,7 @@ function View() {
 
       <h1>Vite + React + {Math.random()}</h1>
       <div className="card">
-        <button onClick={reactCount.increase}>
+        <button onClick={reactCount.click}>
           count is {reactCount.count} - {reactCount.pol.casa} - {reactCount.pol.vol.length} - {reactCount.foo.computed()} - {reactCount.date.getFullYear()}
         </button>
         <p>

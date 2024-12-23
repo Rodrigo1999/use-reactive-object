@@ -1,6 +1,7 @@
-export default abstract class ReactiveObject<T>{
-    protected onProxy(instance: T) {
-      const proto = Object.getPrototypeOf(this);
+export default abstract class ReactiveObject<T> {
+  protected onProxy(instance: T) {
+    let proto = Object.getPrototypeOf(this);
+    while (proto && proto !== Object.prototype) {
       for (const property of Object.getOwnPropertyNames(proto)) {
 
         const descriptor = Object.getOwnPropertyDescriptor(proto, property);
@@ -13,5 +14,8 @@ export default abstract class ReactiveObject<T>{
           this[property] = this[property].bind(instance);
         }
       }
+
+      proto = Object.getPrototypeOf(proto); // Move para o próximo protótipo na cadeia
     }
   }
+}
